@@ -1,10 +1,40 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
+<h2>Le Meilleur film de tous les temps?</h2>
+<div class="col-md-12">
+	<div class="col-md-8 photo">
+		<img class="img" src="{{ asset('img/affranchis.jpg') }}" alt="aff">
+		<div class="article">
+			Le film est basé sur le livre Wiseguy, de Nicholas Pileggi, sorti en 1986, racontant l'histoire vraie de Henry Hill. Pileggi participe à l'écriture du scénario avec Scorsese. Le film retrace la montée et la chute d'associés de la famille Lucchese, Henry Hill et ses amis, couvrant une période de 1955 à 1980.
 
-	<h2> Télécharge cette maquette et intégre ta page ici-même.
-	Le contenu est bien entendu fictif. Ne rentre pas un article en BDD, nous te demandons juste d'intégrer la page. (Le header et le footer sont déjà présent !!!)</h2>
+			Originellement, Scorsese voulait appeler le film Wiseguy, du nom du livre de Nicholas Pileggi, mais ce titre était déjà utilisé pour une série télévisée, il se tourna donc vers le titre Goodfellas.
 
-	<img src="{{ asset('img/image.png') }}">
+			Les Affranchis a beaucoup de succès au box-office, avec 46,8 millions de $ de recettes rien qu'aux États-Unis, pour un budget de 25 millions $. Il reçoit aussi d'excellentes critiques.
+
+			Le film est nommé six fois aux Oscars, incluant celui de meilleur film et de meilleur réalisateur et Joe Pesci remporte celui de meilleur acteur dans un second rôle. Scorsese reçut cinq récompenses des British Academy of Film and Television Arts, incluant celui de meilleur film et de meilleur réalisateur. Le film est nommé meilleur film de l'année par plusieurs groupes de critiques.
+
+			En 2000, Les Affranchis est sélectionné pour Le National Film Registry par le National Film Preservation Board pour la conservation à la Bibliothèque du Congrès aux États-Unis pour son « importance culturelle, historique ou esthétique ». Par la suite, Scorsese réalisera deux autres films sur le crime organisé, Casino en 1995 et Les Infiltrés en 2006.
+		</div>
+	</div>
+	<div class="col-md-4 art">
+		<div class="art1">
+			<img class="img" src="{{ asset('img/parrain.jpg') }}" alt="aff">
+			<p>Il s'agit d'une adaptation du roman éponyme de Mario Puzo. L'histoire s'étale de 1945 à 1955, et se centre sur l'ascension de Michael Corleone (Al Pacino),</p>
+		</div>
+		<div class="art2">
+			<img class="img" src="{{ asset('img/parrain2.jpg') }}" alt="aff">
+			<p>Michael Corleone a succédé à son père Vito à la tête de la famille. Il dirige alors les affaires des Corleone d'une main implacable,</p>
+		</div>
+		<div class="art3">
+			<img class="img" src="{{ asset('img/mean.jpg') }}" alt="aff">
+			<p>Au début des années 1970, dans le quartier de Little Italy à New York, Charlie et Johnny Boy tentent de percer dans le milieu. </p>
+		</div>
+		<div class="art4">
+			<img class="img" src="{{ asset('img/apo.jpg') }}" alt="aff">
+			<p>Apocalypse Now est un film américain réalisé par Francis Ford Coppola, sorti en 1979..</p>
+		</div>
+	</div>
+	
 
 {% endblock %}

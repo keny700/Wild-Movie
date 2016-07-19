@@ -17,8 +17,27 @@
 		<div class="col-md-12">
 			<h2>Commentaires : </h2>
 			<hr>
+			{# {% for comment in comments %}
+        		{{ comment.comment }}
+    		
+    		{% endfor %} #}
+			
+			<h3>Ajouter un commentaire</h3>
+				{{ form_start(Form) }}
+            <div class="form-group">
+                {{ form_errors(commentForm.comment) }}
+                {{ form_widget(commentForm.comment, { 'attr':  {
+                    'rows': '4',
+                    'class': 'form-control',
+                    'placeholder': 'Commenter ici!'
+                }}) }}
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Publier votre commentaire" />
+            </div>
+        {{ form_end(Form) }}
 
-			{# CODE HERE #}
+			
 		</div>
 	</div>
 

@@ -49,6 +49,13 @@ class Film
      */
     private $folder;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="string", length=255, nullable=true)
+     */
+    private $comment;
+
 
     /**
      * Get id
@@ -149,5 +156,27 @@ class Film
     public function getFolder()
     {
         return $this->folder;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     *
+     * @return Film
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+        return $this;
+    }
+    /**
+     * Get comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

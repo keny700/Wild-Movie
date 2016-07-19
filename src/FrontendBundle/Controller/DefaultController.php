@@ -4,7 +4,9 @@ namespace FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontendBundle\Entity\Film;
+use FrontendBundle\Entity\Comment;
 use Symfony\Component\HttpFoundation\Request;
+use FrontendBundle\Form\CommentType;
 
 class DefaultController extends Controller
 {
@@ -63,10 +65,60 @@ class DefaultController extends Controller
 
         $thisMovie = $em->getRepository('FrontendBundle:Film')->findOneById($id);
 
-        return $this->render('FrontendBundle:Default:show.html.twig',
-        	array(
-        		'movie' => $thisMovie,
-        ));
+        $comments = $em->getRepository('FrontendBundle:Comment')->findAll();
+        
+        $comment = new Comment();
 
+        $form = $this->get('form.factory')->create(new CommentType(), $comment);
+
+        $form = $this->createForm('FrontendBundle\Form\CommentType', $comment);
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Commentaire enregistré !')
+            
+            ;
+
+            $em->persist($comment);
+            $em->flush();
+        }
+
+        return $this->render('FrontendBundle:Default:show.html.twig', array(
+            'comments' => $comments,
+            'movie' => $thisMovie,
+            'form' => $form->createView(),
+        ));
+    }
+
+      
+
+    public function newCommentAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $comments = $em->getRepository('FrontendBundle:Comment')->findAll();
+        
+        $comment = new Comment();
+
+        $form = $this->createForm('FrontendBundle\Form\CommentType', $comment);
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Commentaire enregistré !')
+            
+            ;
+
+            $em->persist($comment);
+            $em->flush();
+        }
+
+        return $this->render('FrontendBundle:Default:show.html.twig', array(
+            'comments' => $comments,
+            'form' => $form->createView(),
+        ));
     }
 }

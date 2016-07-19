@@ -3069,14 +3069,19 @@ namespace Symfony\Component\Config
 use Symfony\Component\Config\Resource\ResourceInterface;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
-class ResourceCheckerConfigCache implements ConfigCacheInterface
+class ConfigCache implements ConfigCacheInterface
 {
+private $debug;
 private $file;
-private $resourceCheckers;
-public function __construct($file, array $resourceCheckers = array())
+public function __construct($file, $debug)
 {
 $this->file = $file;
-$this->resourceCheckers = $resourceCheckers;
+$this->debug = (bool) $debug;
+}
+public function __toString()
+{
+@trigger_error('ConfigCache::__toString() is deprecated since version 2.7 and will be removed in 3.0. Use the getPath() method instead.', E_USER_DEPRECATED);
+return $this->file;
 }
 public function getPath()
 {
@@ -3087,21 +3092,19 @@ public function isFresh()
 if (!is_file($this->file)) {
 return false;
 }
-if (!$this->resourceCheckers) {
-return true; }
+if (!$this->debug) {
+return true;
+}
 $metadata = $this->getMetaFile();
 if (!is_file($metadata)) {
-return true;
+return false;
 }
 $time = filemtime($this->file);
 $meta = unserialize(file_get_contents($metadata));
 foreach ($meta as $resource) {
-foreach ($this->resourceCheckers as $checker) {
-if (!$checker->supports($resource)) {
-continue; }
-if ($checker->isFresh($resource, $time)) {
-break; }
-return false; }
+if (!$resource->isFresh($time)) {
+return false;
+}
 }
 return true;
 }
@@ -3115,7 +3118,7 @@ try {
 $filesystem->chmod($this->file, $mode, $umask);
 } catch (IOException $e) {
 }
-if (null !== $metadata) {
+if (null !== $metadata && true === $this->debug) {
 $filesystem->dumpFile($this->getMetaFile(), serialize($metadata), null);
 try {
 $filesystem->chmod($this->getMetaFile(), $mode, $umask);
@@ -3126,35 +3129,6 @@ $filesystem->chmod($this->getMetaFile(), $mode, $umask);
 private function getMetaFile()
 {
 return $this->file.'.meta';
-}
-}
-}
-namespace Symfony\Component\Config
-{
-use Symfony\Component\Config\Resource\BCResourceInterfaceChecker;
-use Symfony\Component\Config\Resource\SelfCheckingResourceChecker;
-class ConfigCache extends ResourceCheckerConfigCache
-{
-private $debug;
-public function __construct($file, $debug)
-{
-parent::__construct($file, array(
-new SelfCheckingResourceChecker(),
-new BCResourceInterfaceChecker(),
-));
-$this->debug = (bool) $debug;
-}
-public function __toString()
-{
-@trigger_error('ConfigCache::__toString() is deprecated since version 2.7 and will be removed in 3.0. Use the getPath() method instead.', E_USER_DEPRECATED);
-return $this->getPath();
-}
-public function isFresh()
-{
-if (!$this->debug && is_file($this->getPath())) {
-return true;
-}
-return parent::isFresh();
 }
 }
 }

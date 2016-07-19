@@ -59,3 +59,56 @@
 	background-color:#04B45F;
 	padding:20px;
 }
+.article 
+{
+	height: 300px;
+	width:70%;
+	margin-top: 50px;
+}
+.photo
+{
+	height: 300px;
+	padding-left: 50px;
+}
+img
+{
+	max-height: 400px;
+	width:70%;
+
+}
+.vignette
+{
+	height: 100px;
+}
+.art1
+{
+	max-width: 200px;
+	max-height: 100px;
+	margin-bottom: 50px;
+}
+.art2
+{
+	max-width: 200px;
+	max-height: 100px;
+	margin-bottom: 50px;
+}
+.art3
+{
+	max-width: 200px;
+	max-height: 100px;
+	margin-bottom: 50px;
+}
+.art4
+{
+	max-width: 200px;
+	max-height: 100px;
+	margin-bottom: 50px;
+}
+h2
+{
+	margin-left: 100px;
+}
+.art p
+{
+	float: left;
+}

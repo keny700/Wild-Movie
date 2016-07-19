@@ -1,5 +1,5 @@
 <?php
-// src/RythmBundle/Form/FilmType.php
+// src/FrontendBundle/Form/FilmType.php
 
 namespace FrontendBundle\Form;
 
