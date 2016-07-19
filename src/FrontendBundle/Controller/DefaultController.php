@@ -65,30 +65,10 @@ class DefaultController extends Controller
 
         $thisMovie = $em->getRepository('FrontendBundle:Film')->findOneById($id);
 
-        $comments = $em->getRepository('FrontendBundle:Comment')->findAll();
         
-        $comment = new Comment();
-
-        $form = $this->get('form.factory')->create(new CommentType(), $comment);
-
-        $form = $this->createForm('FrontendBundle\Form\CommentType', $comment);
-        $form->handleRequest($request);
-        
-        if ($form->isValid()) {
-            $request->getSession()
-            ->getFlashBag()
-            ->add('success', 'Commentaire enregistré !')
-            
-            ;
-
-            $em->persist($comment);
-            $em->flush();
-        }
 
         return $this->render('FrontendBundle:Default:show.html.twig', array(
-            'comments' => $comments,
             'movie' => $thisMovie,
-            'form' => $form->createView(),
         ));
     }
 
@@ -101,6 +81,8 @@ class DefaultController extends Controller
         $comments = $em->getRepository('FrontendBundle:Comment')->findAll();
         
         $comment = new Comment();
+
+        $form = $this->get('form.factory')->create(new CommentType(), $comment);
 
         $form = $this->createForm('FrontendBundle\Form\CommentType', $comment);
         $form->handleRequest($request);

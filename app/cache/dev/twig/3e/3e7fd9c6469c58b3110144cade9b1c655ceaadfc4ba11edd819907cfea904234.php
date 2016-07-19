@@ -21,20 +21,20 @@ class __TwigTemplate_9f818cdec519f9788feeeccea1fdb702c1385dfe051f75f5f5fe3e9d43f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_591368a15a22ad03c38556bf2a90b6d1d42e1bc008c657b5bf72dcd5c3379b4b = $this->env->getExtension("native_profiler");
-        $__internal_591368a15a22ad03c38556bf2a90b6d1d42e1bc008c657b5bf72dcd5c3379b4b->enter($__internal_591368a15a22ad03c38556bf2a90b6d1d42e1bc008c657b5bf72dcd5c3379b4b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FrontendBundle:Default:show.html.twig"));
+        $__internal_d78bca3f111127d2900e3cf435e44ad0ddecddb6c6b1a87ba0265fb59f589b16 = $this->env->getExtension("native_profiler");
+        $__internal_d78bca3f111127d2900e3cf435e44ad0ddecddb6c6b1a87ba0265fb59f589b16->enter($__internal_d78bca3f111127d2900e3cf435e44ad0ddecddb6c6b1a87ba0265fb59f589b16_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FrontendBundle:Default:show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_591368a15a22ad03c38556bf2a90b6d1d42e1bc008c657b5bf72dcd5c3379b4b->leave($__internal_591368a15a22ad03c38556bf2a90b6d1d42e1bc008c657b5bf72dcd5c3379b4b_prof);
+        $__internal_d78bca3f111127d2900e3cf435e44ad0ddecddb6c6b1a87ba0265fb59f589b16->leave($__internal_d78bca3f111127d2900e3cf435e44ad0ddecddb6c6b1a87ba0265fb59f589b16_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_2adda3dfeccd805ca7c16423b6d996e3e498a182ff7af4930481e3b8a3a3d38f = $this->env->getExtension("native_profiler");
-        $__internal_2adda3dfeccd805ca7c16423b6d996e3e498a182ff7af4930481e3b8a3a3d38f->enter($__internal_2adda3dfeccd805ca7c16423b6d996e3e498a182ff7af4930481e3b8a3a3d38f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_194f80ea94f5f9434b10acb7f9dcc41ec6ffa5f35567a6de9875c7c628db8182 = $this->env->getExtension("native_profiler");
+        $__internal_194f80ea94f5f9434b10acb7f9dcc41ec6ffa5f35567a6de9875c7c628db8182->enter($__internal_194f80ea94f5f9434b10acb7f9dcc41ec6ffa5f35567a6de9875c7c628db8182_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "\t<div class=\"col-md-12\">
@@ -63,6 +63,20 @@ class __TwigTemplate_9f818cdec519f9788feeeccea1fdb702c1385dfe051f75f5f5fe3e9d43f
 \t\t\t<h2>Commentaires : </h2>
 \t\t\t<hr>
 \t\t\t";
+        // line 20
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["comments"]) ? $context["comments"] : $this->getContext($context, "comments")));
+        foreach ($context['_seq'] as $context["_key"] => $context["comment"]) {
+            // line 21
+            echo "        \t\t";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["comment"], "comment", array()), "html", null, true);
+            echo "
+    \t\t
+    \t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['comment'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 24
         echo "\t\t\t
 \t\t\t<h3>Ajouter un commentaire</h3>
@@ -95,7 +109,7 @@ class __TwigTemplate_9f818cdec519f9788feeeccea1fdb702c1385dfe051f75f5f5fe3e9d43f
 
 ";
         
-        $__internal_2adda3dfeccd805ca7c16423b6d996e3e498a182ff7af4930481e3b8a3a3d38f->leave($__internal_2adda3dfeccd805ca7c16423b6d996e3e498a182ff7af4930481e3b8a3a3d38f_prof);
+        $__internal_194f80ea94f5f9434b10acb7f9dcc41ec6ffa5f35567a6de9875c7c628db8182->leave($__internal_194f80ea94f5f9434b10acb7f9dcc41ec6ffa5f35567a6de9875c7c628db8182_prof);
 
     }
 
@@ -111,7 +125,7 @@ class __TwigTemplate_9f818cdec519f9788feeeccea1fdb702c1385dfe051f75f5f5fe3e9d43f
 
     public function getDebugInfo()
     {
-        return array (  89 => 38,  82 => 33,  80 => 29,  76 => 28,  71 => 26,  67 => 24,  56 => 12,  51 => 10,  44 => 6,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  103 => 38,  96 => 33,  94 => 29,  90 => 28,  85 => 26,  81 => 24,  71 => 21,  67 => 20,  56 => 12,  51 => 10,  44 => 6,  40 => 4,  34 => 3,  11 => 1,);
     }
 }
 /* {% extends '::base.html.twig' %}*/
@@ -133,10 +147,10 @@ class __TwigTemplate_9f818cdec519f9788feeeccea1fdb702c1385dfe051f75f5f5fe3e9d43f
 /* 		<div class="col-md-12">*/
 /* 			<h2>Commentaires : </h2>*/
 /* 			<hr>*/
-/* 			{# {% for comment in comments %}*/
+/* 			{% for comment in comments %}*/
 /*         		{{ comment.comment }}*/
 /*     		*/
-/*     		{% endfor %} #}*/
+/*     		{% endfor %}*/
 /* 			*/
 /* 			<h3>Ajouter un commentaire</h3>*/
 /* 				{{ form_start(Form) }}*/
